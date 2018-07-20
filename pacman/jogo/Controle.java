@@ -1,23 +1,14 @@
 package jogo;
-import java.util.concurrent.TimeUnit;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Controle extends JFrame implements KeyListener{
-    //metodos da interface que não utilizaremos
-    public void keyTyped(KeyEvent e){}
-    public void keyReleased(KeyEvent e){}
-    //
 
-    int posy;
-    int posx;
-    int activedkey;
-    Labirinto l;
-
-    public Controle(Labirinto l)throws Exception {
-        this.l = l;
+    static int activedkey;
+   
+    public Controle(){
         setSize(0,0);
         setVisible(true);
         addKeyListener(this);
@@ -26,44 +17,19 @@ public class Controle extends JFrame implements KeyListener{
     
     public void keyPressed(KeyEvent e){
         int catched = e.getKeyCode();
-        if (catched == 37) setActivedKey(37); //seta esq.
-        else if (catched == 38) setActivedKey(38); //seta cima
-        else if (catched == 39) setActivedKey(39); //seta dir.
-        else if (catched == 40) setActivedKey(40); //seta baixo
+        if (catched == 37) Controle.setActivedKey(37); //seta esq.
+        else if (catched == 38) Controle.setActivedKey(38); //seta cima
+        else if (catched == 39) Controle.setActivedKey(39); //seta dir.
+        else if (catched == 40) Controle.setActivedKey(40); //seta baixo
     }
     
-    public void setActivedKey(int key){
-        this.activedkey = key;
+    public static void setActivedKey(int key){
+        Controle.activedkey = key;
     }
+    
+    //metodos da interface que não utilizaremos
+    public void keyTyped(KeyEvent e){}
+    public void keyReleased(KeyEvent e){}
+    //
 
-    public void mover(){
-        if (activedkey == 37) { //seta esq.
-            if (posx > 0){
-                l.mudarQuadrado('#', posy, posx);
-                l.mudarQuadrado('C', posy, posx-1);
-                posx--; 
-            }
-        }
-        else if (activedkey == 38) { //seta cima
-            if (posy > 0){
-                l.mudarQuadrado('#', posy, posx);
-                l.mudarQuadrado('C', posy-1, posx);
-                posy--; 
-            }
-        }
-        else if (activedkey == 39){ //seta dir.
-            if (posx < l.getLargura()-1){
-                l.mudarQuadrado('#', posy, posx);
-                l.mudarQuadrado('C', posy, posx+1);
-                posx++; 
-            }
-        }
-        else if (activedkey == 40){ //seta baixo
-            if (posy < l.getAltura()-1){
-                l.mudarQuadrado('#', posy, posx);
-                l.mudarQuadrado('C', posy+1, posx);
-                posy++; 
-            }
-        }
-    }
 }
