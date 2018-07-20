@@ -43,9 +43,10 @@ public class GameManager {
 
     public void play(){
         try{
-            Controle c = new Controle(lab);
+            Controle c = new Controle();
+            Personagem pacman = new Personagem(lab);
             while(true){
-                c.mover();
+                pacman.mover();
                 clear();
                 tela();
                 TimeUnit.MILLISECONDS.sleep(100);
