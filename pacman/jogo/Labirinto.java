@@ -6,6 +6,7 @@ public class Labirinto {
 
 	char[][] labirinto;
 	private int altura, largura;
+	private int[] posPacman = new int[2];
 
 	public Labirinto(int a, int l) throws Exception {
 	
@@ -18,6 +19,9 @@ public class Labirinto {
 		for(int i = 0; i<this.getAltura(); i++) {
 			for (int j = 0; j<this.getLargura(); j++) {
 				labirinto[i][j] = devolveChar((char)arquivo.read());
+
+				if(labirinto[i][j] == 'C')
+					setPosPacman(j, i);
 			}
 			arquivo.read(); //Jogando fora o caractere '/n'
 		}
@@ -50,7 +54,20 @@ public class Labirinto {
 	public int getLargura() {
 		return this.largura;
 	}
+
+	public void setPosPacman(int x, int y) {
+		this.posPacman[0] = x;
+		this.posPacman[1] = y;
+	}
+
+	public int[] getPosPacman() {
+		return posPacman;
+	}
 	
+	public char getCasa(int x, int y) {
+		return labirinto[y][x];
+	}
+
 	public void mostrarLabirinto() {
 		
 		for(int i = 0; i<this.getAltura(); i++) {
@@ -62,8 +79,8 @@ public class Labirinto {
 		}
 	}	
 	
-	public void mudarQuadrado(char novo, int i, int j){ //para mudar um quadrado
-		this.labirinto[i][j] = novo;
+	public void mudarQuadrado(char novoSimbolo, int x, int y){ //para mudar um quadrado
+		this.labirinto[y][x] = novoSimbolo;
 	}
 	
 }

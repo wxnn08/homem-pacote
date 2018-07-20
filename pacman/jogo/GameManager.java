@@ -44,7 +44,7 @@ public class GameManager {
     public void play(){
         try{
             Controle c = new Controle();
-            Personagem pacman = new Personagem(lab);
+            Personagem pacman = new Pacman(lab);
             while(true){
                 pacman.mover();
                 clear();
