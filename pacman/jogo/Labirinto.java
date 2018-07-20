@@ -61,4 +61,9 @@ public class Labirinto {
 			System.out.println();
 		}
 	}	
+	
+	public void mudarQuadrado(char novo, int i, int j){ //para mudar um quadrado
+		this.labirinto[i][j] = novo;
+	}
+	
 }
