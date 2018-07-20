@@ -1,14 +1,15 @@
 package jogo;
 import java.util.concurrent.TimeUnit;
 
-public class GameManager {
+
+public class GameManager extends Thread{
 
     private int pontos;
     private Labirinto lab;
     private int vidas;
 
-    public GameManager(Labirinto lab) {
-        this.lab = lab;
+    public GameManager(int altura, int largura) throws Exception {
+        lab = new Labirinto(altura, largura);
         setVidas(3);;
         setPontos(0);;
     }
@@ -40,18 +41,16 @@ public class GameManager {
         System.out.println("Pontuação: "+getPontos());
     }
 
-    public void play() {
-
-        GameManager.clear();
-        while (vidas>0) {
-			try {
-                this.tela();
-				TimeUnit.MILLISECONDS.sleep(60);
-				GameManager.clear();
-			} catch (InterruptedException e) {
-				System.out.println(e.getMessage());
-			}
-		}
-
+    public void run(){
+        try{
+            Controle c = new Controle(lab);
+            while(true){
+                c.mover();
+                clear();
+                tela();
+                TimeUnit.MILLISECONDS.sleep(100);
+            }
+        } catch (Exception e){}
     }
 }
+

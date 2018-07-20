@@ -11,14 +11,13 @@ public class Controle extends JFrame implements KeyListener{
     public void keyReleased(KeyEvent e){}
     //
 
-    Labirinto l = new Labirinto(15,15);
-    GameManager gm = new GameManager(l);
-
     int posy;
     int posx;
     int activedkey;
+    Labirinto l;
 
-    public Controle()throws Exception {
+    public Controle(Labirinto l)throws Exception {
+        this.l = l;
         setSize(0,0);
         setVisible(true);
         addKeyListener(this);
