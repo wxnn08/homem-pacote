@@ -2,7 +2,7 @@ package jogo;
 import java.util.concurrent.TimeUnit;
 
 
-public class GameManager extends Thread{
+public class GameManager {
 
     private int pontos;
     private Labirinto lab;
@@ -41,7 +41,7 @@ public class GameManager extends Thread{
         System.out.println("Pontuação: "+getPontos());
     }
 
-    public void run(){
+    public void play(){
         try{
             Controle c = new Controle(lab);
             while(true){
