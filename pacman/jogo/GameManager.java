@@ -29,12 +29,12 @@ public class GameManager {
         return this.pontos;
     }
 
-    private static void clear () {
+    static void clear () {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
     }
 
-    private void tela() {
+    void tela() {
         System.out.println("Vidas: "+getVidas());
         lab.mostrarLabirinto();
         System.out.println("Pontuação: "+getPontos());
