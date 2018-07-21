@@ -1,7 +1,6 @@
 package jogo;
 import java.util.concurrent.TimeUnit;
 
-
 public class GameManager {
 
     private int pontos;
@@ -13,7 +12,7 @@ public class GameManager {
         setVidas(3);;
         setPontos(0);;
     }
-    
+
     public void setVidas(int n) {
         this.vidas = n;
     }
@@ -43,15 +42,15 @@ public class GameManager {
 
     public void play(){
         try{
-            Controle c = new Controle();
-            Personagem pacman = new Pacman(lab);
+            Controle c = new Controle(lab);
+            Personagem pacman = new Pacman(lab, 10, 7);
+			pacman.spawn();
             while(true){
-                pacman.mover();
+                pacman.move();
                 clear();
                 tela();
-                TimeUnit.MILLISECONDS.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(150);
             }
         } catch (Exception e){}
     }
 }
-
