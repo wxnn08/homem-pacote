@@ -7,8 +7,8 @@ public class GameManager {
     private Labirinto lab;
     private int vidas;
 
-    public GameManager(int altura, int largura) throws Exception {
-        lab = new Labirinto(altura, largura);
+    public GameManager() throws Exception {
+        lab = new Labirinto();
         setVidas(3);;
         setPontos(0);;
     }
@@ -43,7 +43,7 @@ public class GameManager {
     public void play(){
         try{
             Controle c = new Controle(lab);
-            Personagem pacman = new Pacman(lab, 10, 7);
+            Personagem pacman = new Pacman(lab, lab.getPosPacman(0), lab.getPosPacman(1));
 			pacman.spawn();
             while(true){
                 pacman.move();

@@ -4,27 +4,37 @@ import java.io.FileReader;
 
 public class Labirinto {
 
+	final int larguraMaxima = 500; 
+	final int alturaMaxima = 500; 
+
 	char[][] labirinto;
-	private int altura, largura;
+	private int altura;
+	private int[] largura;
 	private int[] posPacman = new int[2];
 
-	public Labirinto(int a, int l) throws Exception {
+	public Labirinto() throws Exception {
 
-		this.setAltura(a);
-		this.setLargura(l);
-		labirinto = new char[this.getAltura()][this.getLargura()];
+		labirinto = new char[larguraMaxima][alturaMaxima];
+		largura = new int[larguraMaxima];
 
-		BufferedReader arquivo = new BufferedReader(new FileReader("mapa.txt"));
+		BufferedReader arquivo = new BufferedReader(new FileReader("mapaTeste.txt"));
+		
+		String s;
+		for(int i = 0;(s = arquivo.readLine()) != null ; i++) {
+				
+			if(s.length() >= larguraMaxima) {
+				// lança exceção
+			}
+			for (int j = 0; j<s.length(); j++) {
+				labirinto[i][j] = devolveChar(s.charAt(j));
 
-		for(int i = 0; i<this.getAltura(); i++) {
-			for (int j = 0; j<this.getLargura(); j++) {
-				labirinto[i][j] = devolveChar((char)arquivo.read());
-
-				if(labirinto[i][j] == 'C')
+				if(s.charAt(j) == 'C')
 					setPosPacman(j, i);
 			}
-			arquivo.read(); //Jogando fora o caractere '/n'
+			setAltura(getAltura()+1);
+			setLargura(i, s.length());
 		}
+
 		arquivo.close();
 	}
 
@@ -32,25 +42,27 @@ public class Labirinto {
 		if (n=='#')
 			return '\u2588';
 		else if (n=='G')
-			return 'G';
+			return '\u15E3';
+		else if (n=='C')
+			return '\u228F';
 		else
 			return '\u2022';
 	}
 
-	public void setAltura(int n) {
-		this.altura = n;
+	public void setAltura(int valor) {
+		this.altura = valor;
 	}
 
 	public int getAltura() {
 		return this.altura;
 	}
 
-	public void setLargura(int n) {
-		this.largura = n;
+	public void setLargura(int linha, int valor) {
+		this.largura[linha] = valor;
 	}
 
-	public int getLargura() {
-		return this.largura;
+	public int getLargura(int linha) {
+		return this.largura[linha];
 	}
 
 	public void setPosPacman(int x, int y) {
@@ -58,8 +70,8 @@ public class Labirinto {
 		this.posPacman[1] = y;
 	}
 
-	public int[] getPosPacman() {
-		return posPacman;
+	public int getPosPacman(int i) {
+		return posPacman[i];
 	}
 
 	public char getCasa(int x, int y) {
@@ -69,7 +81,7 @@ public class Labirinto {
 	public void mostrarLabirinto() {
 
 		for(int i = 0; i<this.getAltura(); i++) {
-			for (int j = 0; j<this.getLargura(); j++) {
+			for (int j = 0; j<this.getLargura(i); j++) {
 				System.out.print(this.labirinto[i][j]);
 			}
 

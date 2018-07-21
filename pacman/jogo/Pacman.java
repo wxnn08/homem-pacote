@@ -5,7 +5,7 @@ public class Pacman extends Personagem{
 	static int posy;
 	static int posx;
 
-	public Pacman(Labirinto labirinto, int spy, int spx) throws Exception{
+	public Pacman(Labirinto labirinto, int spx, int spy) throws Exception{
 		super(labirinto);
 		this.spawny = spy;
 		this.spawnx = spx;
@@ -21,28 +21,28 @@ public class Pacman extends Personagem{
 	public void move(){
 
 		if (Controle.activedkey == 37) { //seta esq.
-            if (posx > 0 && labirinto.getCasa(posx-1, posy)!='\u2588'){
+            if (labirinto.getCasa(posx-1, posy)!='\u2588'){
                 labirinto.mudarQuadrado(' ', posx, posy);
                 labirinto.mudarQuadrado('\u2290', posx-1, posy);
                 posx--;
             }
         }
         else if (Controle.activedkey == 38) { //seta cima
-            if (posy > 0 && labirinto.getCasa(posx, posy-1)!='\u2588'){
+            if (labirinto.getCasa(posx, posy-1)!='\u2588'){
                 labirinto.mudarQuadrado(' ', posx, posy);
                 labirinto.mudarQuadrado('\u2294', posx, posy-1);
                 posy--;
             }
         }
         else if (Controle.activedkey == 39){ //seta dir.
-            if (posx < labirinto.getLargura()-1 && labirinto.getCasa(posx+1, posy)!='\u2588'){
+            if (labirinto.getCasa(posx+1, posy)!='\u2588'){
                 labirinto.mudarQuadrado(' ', posx, posy);
                 labirinto.mudarQuadrado('\u228F', posx+1, posy);
                 posx++;
             }
         }
         else if (Controle.activedkey == 40){ //seta baixo
-            if (posy < labirinto.getAltura()-1 && labirinto.getCasa(posx, posy+1)!='\u2588'){
+            if (labirinto.getCasa(posx, posy+1)!='\u2588'){
                 labirinto.mudarQuadrado(' ', posx, posy);
                 labirinto.mudarQuadrado('\u2293', posx, posy+1);
                 posy++;
