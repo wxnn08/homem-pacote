@@ -3,7 +3,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameManager {
 
-    private int pontos;
+    private static int pontos;
     private Labirinto lab;
     private int vidas;
 
@@ -21,12 +21,12 @@ public class GameManager {
         return this.vidas;
     }
 
-    public void setPontos(int n) {
-        this.pontos = n;
+    public static void setPontos(int n) {
+        pontos += n;
     }
 
     public int getPontos() {
-        return this.pontos;
+        return pontos;
     }
 
     static void clear () {

@@ -22,6 +22,8 @@ public class Pacman extends Personagem{
 
 		if (Controle.activedkey == 37) { //seta esq.
             if (lab.getQuadrado(posx-1, posy)!='\u2588'){
+                if(lab.getQuadrado(posx-1, posy) == '\u2022')
+                    GameManager.setPontos(10);
                 lab.mudarQuadrado(' ', posx, posy);
                 lab.mudarQuadrado('\u2290', posx-1, posy);
                 posx--;
@@ -29,6 +31,8 @@ public class Pacman extends Personagem{
         }
         else if (Controle.activedkey == 38) { //seta cima
             if (lab.getQuadrado(posx, posy-1)!='\u2588'){
+                if(lab.getQuadrado(posx, posy-1)=='\u2022')
+                    GameManager.setPontos(10);
                 lab.mudarQuadrado(' ', posx, posy);
                 lab.mudarQuadrado('\u2294', posx, posy-1);
                 posy--;
@@ -36,6 +40,8 @@ public class Pacman extends Personagem{
         }
         else if (Controle.activedkey == 39){ //seta dir.
             if (lab.getQuadrado(posx+1, posy)!='\u2588'){
+                if(lab.getQuadrado(posx+1, posy)=='\u2022')
+                    GameManager.setPontos(10);
                 lab.mudarQuadrado(' ', posx, posy);
                 lab.mudarQuadrado('\u228F', posx+1, posy);
                 posx++;
@@ -43,6 +49,8 @@ public class Pacman extends Personagem{
         }
         else if (Controle.activedkey == 40){ //seta baixo
             if (lab.getQuadrado(posx, posy+1)!='\u2588'){
+                if(lab.getQuadrado(posx, posy+1)=='\u2022')
+                    GameManager.setPontos(10);
                 lab.mudarQuadrado(' ', posx, posy);
                 lab.mudarQuadrado('\u2293', posx, posy+1);
                 posy++;
