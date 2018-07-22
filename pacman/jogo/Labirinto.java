@@ -27,13 +27,7 @@ public class Labirinto {
 				// lança exceção
 			}
 			for (int j = 0; j<s.length(); j++) {
-				labirinto[i][j] = devolveChar(s.charAt(j));
-
-				if(s.charAt(j) == 'G')
-					setPosFantasma(j, i);
-
-				if(s.charAt(j) == 'C')
-					setPosPacman(j, i);
+				labirinto[i][j] = devolveChar(s.charAt(j), j, i);
 			}
 			setAltura(getAltura()+1);
 			setLargura(i, s.length());
@@ -42,13 +36,19 @@ public class Labirinto {
 		arquivo.close();
 	}
 
-	private char devolveChar(char n) {
+	private char devolveChar(char n, int j, int i) {
 		if (n=='#')
 			return '\u2588';
-		else if (n=='G')
+		else if (n=='G'){
+			setPosFantasma(j, i);
 			return '\u15E3';
-		else if (n=='C')
+		}
+		else if (n=='C') {
+			setPosPacman(j, i);
 			return '\u228F';
+		}
+		else if (n=='N')
+			return ' ';
 		else
 			return '\u2022';
 	}
