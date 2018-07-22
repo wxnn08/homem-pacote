@@ -11,6 +11,7 @@ public class Labirinto {
 	private int altura;
 	private int[] largura;
 	private int[] posPacman = new int[2];
+	private int[] posFantasma = new int[2];
 
 	public Labirinto() throws Exception {
 
@@ -27,6 +28,9 @@ public class Labirinto {
 			}
 			for (int j = 0; j<s.length(); j++) {
 				labirinto[i][j] = devolveChar(s.charAt(j));
+
+				if(s.charAt(j) == 'G')
+					setPosFantasma(j, i);
 
 				if(s.charAt(j) == 'C')
 					setPosPacman(j, i);
@@ -65,6 +69,16 @@ public class Labirinto {
 		return this.largura[linha];
 	}
 
+	public void setPosFantasma(int x, int y) {
+		this.posFantasma[0] = x;
+		this.posFantasma[1] = y;
+	}
+
+	public int getPosFantasma(int i) {
+		return posFantasma[i];
+	}
+
+
 	public void setPosPacman(int x, int y) {
 		this.posPacman[0] = x;
 		this.posPacman[1] = y;
@@ -74,7 +88,7 @@ public class Labirinto {
 		return posPacman[i];
 	}
 
-	public char getCasa(int x, int y) {
+	public char getQuadrado(int x, int y) {
 		return labirinto[y][x];
 	}
 

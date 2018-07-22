@@ -5,10 +5,10 @@ public abstract class Personagem{
 	int spawnx;
 	public abstract void spawn();
 
-    Labirinto labirinto;
+    Labirinto lab;
 
-    public Personagem(Labirinto labirinto) throws Exception{
-        this.labirinto = labirinto;
+    public Personagem(Labirinto lab) throws Exception{
+        this.lab = lab;
     }
 
     protected abstract void move();

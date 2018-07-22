@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 public class Controle extends JFrame implements KeyListener{
 
     static int activedkey;
-	Labirinto labirinto;
+	Labirinto lab;
 
-    public Controle(Labirinto l){
-		this.labirinto = l;
+    public Controle(Labirinto lab){
+		this.lab = lab;
         setSize(0,0);
         setVisible(true);
         addKeyListener(this);
@@ -20,10 +20,10 @@ public class Controle extends JFrame implements KeyListener{
 	private boolean permitedChange(int dir){
 		int x = Pacman.posx;
 		int y = Pacman.posy;
-		if (dir == 1) return (labirinto.getCasa(x-1,y) != '\u2588'); //esq
-		if (dir == 2) return (labirinto.getCasa(x,y-1) != '\u2588'); //cima
-		if (dir == 3) return (labirinto.getCasa(x+1,y) != '\u2588'); //dir
-		if (dir == 4) return (labirinto.getCasa(x,y+1) != '\u2588'); //baixo
+		if (dir == 1) return (lab.getQuadrado(x-1,y) != '\u2588'); //esq
+		if (dir == 2) return (lab.getQuadrado(x,y-1) != '\u2588'); //cima
+		if (dir == 3) return (lab.getQuadrado(x+1,y) != '\u2588'); //dir
+		if (dir == 4) return (lab.getQuadrado(x,y+1) != '\u2588'); //baixo
 		return false;
 	}
 

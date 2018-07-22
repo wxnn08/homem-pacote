@@ -44,9 +44,12 @@ public class GameManager {
         try{
             Controle c = new Controle(lab);
             Personagem pacman = new Pacman(lab, lab.getPosPacman(0), lab.getPosPacman(1));
+            Personagem fantasma = new Fantasma(lab, lab.getPosFantasma(0), lab.getPosFantasma(1));
 			pacman.spawn();
+			fantasma.spawn();
             while(true){
                 pacman.move();
+                fantasma.move();
                 clear();
                 tela();
                 TimeUnit.MILLISECONDS.sleep(150);
