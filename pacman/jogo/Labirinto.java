@@ -4,14 +4,14 @@ import java.io.FileReader;
 
 public class Labirinto {
 
-	final int larguraMaxima = 500; 
-	final int alturaMaxima = 500; 
+	final int larguraMaxima = 500;
+	final int alturaMaxima = 500;
 
 	char[][] labirinto;
 	private int altura;
 	private int[] largura;
-	private int[] posPacman = new int[2];
-	private int[] posFantasma = new int[2];
+	private int[] spawnPacman = new int[2];
+	private int[] spawnFantasma = new int[2];
 
 	public Labirinto() throws Exception {
 
@@ -19,10 +19,10 @@ public class Labirinto {
 		largura = new int[larguraMaxima];
 
 		BufferedReader arquivo = new BufferedReader(new FileReader("mapaTeste.txt"));
-		
+
 		String s;
 		for(int i = 0;(s = arquivo.readLine()) != null ; i++) {
-				
+
 			if(s.length() >= larguraMaxima) {
 				// lança exceção
 			}
@@ -40,11 +40,11 @@ public class Labirinto {
 		if (n=='#')
 			return '\u2588';
 		else if (n=='G'){
-			setPosFantasma(j, i);
+			setSpawnFantasma(i, j);
 			return '\u15E3';
 		}
 		else if (n=='C') {
-			setPosPacman(j, i);
+			setSpawnPacman(i, j);
 			return '\u228F';
 		}
 		else if (n=='N')
@@ -53,58 +53,55 @@ public class Labirinto {
 			return '\u2022';
 	}
 
-	public void setAltura(int valor) {
-		this.altura = valor;
+	private void setAltura(int valor) {
+		altura = valor;
 	}
 
-	public int getAltura() {
-		return this.altura;
+	private int getAltura() {
+		return altura;
 	}
 
-	public void setLargura(int linha, int valor) {
-		this.largura[linha] = valor;
+	private void setLargura(int linha, int valor) {
+		largura[linha] = valor;
 	}
 
-	public int getLargura(int linha) {
-		return this.largura[linha];
+	private int getLargura(int linha) {
+		return largura[linha];
 	}
 
-	public void setPosFantasma(int x, int y) {
-		this.posFantasma[0] = x;
-		this.posFantasma[1] = y;
+	private void setSpawnFantasma(int y, int x) {
+		spawnFantasma[0] = y;
+		spawnFantasma[1] = x;
 	}
 
-	public int getPosFantasma(int i) {
-		return posFantasma[i];
+	int getSpawnFantasma(int i) {
+		return spawnFantasma[i];
 	}
 
-
-	public void setPosPacman(int x, int y) {
-		this.posPacman[0] = x;
-		this.posPacman[1] = y;
+	private void setSpawnPacman(int y, int x) {
+		spawnPacman[0] = y;
+		spawnPacman[1] = x;
 	}
 
-	public int getPosPacman(int i) {
-		return posPacman[i];
+	int getSpawnPacman(int i) {
+		return spawnPacman[i];
 	}
 
-	public char getQuadrado(int x, int y) {
+	char getQuadrado(int x, int y) {
 		return labirinto[y][x];
 	}
 
-	public void mostrarLabirinto() {
-
-		for(int i = 0; i<this.getAltura(); i++) {
-			for (int j = 0; j<this.getLargura(i); j++) {
-				System.out.print(this.labirinto[i][j]);
+	void mostrarLabirinto() {
+		for (int i = 0; i < getAltura(); i++) {
+			for (int j = 0; j < getLargura(i); j++) {
+				System.out.print(labirinto[i][j]);
 			}
-
 			System.out.println();
 		}
 	}
 
-	public void mudarQuadrado(char novoSimbolo, int x, int y){ //para mudar um quadrado
-		this.labirinto[y][x] = novoSimbolo;
+	void mudarQuadrado(char novoSimbolo, int x, int y){
+		labirinto[y][x] = novoSimbolo;
 	}
 
 }

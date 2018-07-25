@@ -1,59 +1,61 @@
 package jogo;
 import java.util.concurrent.TimeUnit;
 
-public class GameManager {
+public class GameManager{
 
-    private static int pontos;
-    private Labirinto lab;
-    private int vidas;
+    static Labirinto lab;
+    private static int pontos = 0;
+    private static int vidas = 3;
 
-    public GameManager() throws Exception {
+    public GameManager() throws Exception{
         lab = new Labirinto();
-        setVidas(3);;
-        setPontos(0);;
     }
 
-    public void setVidas(int n) {
+    void setVidas(int n){
         this.vidas = n;
     }
 
-    public int getVidas() {
-        return this.vidas;
-    }
-
-    public static void setPontos(int n) {
+    static void adicionaPontos(int n){
         pontos += n;
     }
 
-    public int getPontos() {
-        return pontos;
-    }
-
-    static void clear () {
+    private void clear(){
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
     }
 
-    void tela() {
-        System.out.println("Vidas: "+getVidas());
+    private void tela(){
+        System.out.println("Vidas: " + vidas);
         lab.mostrarLabirinto();
-        System.out.println("Pontuação: "+getPontos());
+        System.out.println("Pontuação: " + pontos);
     }
+
+	private boolean start(){
+		if (Controle.getActivedKey() != 0) return true;
+	 	return false;
+	}
 
     public void play(){
         try{
-            Controle c = new Controle(lab);
-            Personagem pacman = new Pacman(lab, lab.getPosPacman(0), lab.getPosPacman(1));
-            Personagem fantasma = new Fantasma(lab, lab.getPosFantasma(0), lab.getPosFantasma(1));
+			Controle c = new Controle();
+			Personagem pacman = new Pacman(lab.getSpawnPacman(0), lab.getSpawnPacman(1));
+			Personagem fantasma = new Fantasma(lab.getSpawnFantasma(0), lab.getSpawnFantasma(1));
 			pacman.spawn();
 			fantasma.spawn();
-            while(true){
-                pacman.move();
-                fantasma.move();
-                clear();
-                tela();
-                TimeUnit.MILLISECONDS.sleep(150);
-            }
+	        while(true){
+				if (start() == true){
+				    pacman.move();
+			        fantasma.move();
+			        clear();
+			        tela();
+			    }
+			    else {
+			        clear();
+			        tela();
+			        System.out.println("Utilize as setas para começar!");
+			    }
+			    TimeUnit.MILLISECONDS.sleep(150);
+			}
         } catch (Exception e){}
     }
 }
