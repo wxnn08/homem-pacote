@@ -3,7 +3,9 @@ import java.util.concurrent.TimeUnit;
 
 public class GameManager{
 
-    static Labirinto lab;
+	static Labirinto lab;
+	static Pacman pacman;
+	static Fantasma fantasma;
     private static int pontos = 0;
     private static int vidas = 3;
 
@@ -11,9 +13,13 @@ public class GameManager{
         lab = new Labirinto();
     }
 
-    void setVidas(int n){
-        this.vidas = n;
+    static void setVidas(int n){
+        vidas = n;
     }
+
+	private static int getVidas(){
+		return vidas;
+	}
 
     static void adicionaPontos(int n){
         pontos += n;
@@ -35,17 +41,26 @@ public class GameManager{
 	 	return false;
 	}
 
+	static void mortePacman(int posy, int posx){
+		setVidas(getVidas()-1);
+		pacman.spawn();
+		fantasma.spawn();
+		fantasma.setUltimoQuadrado(' ');
+		lab.mudarQuadrado(' ', posx, posy);
+		Controle.setActivedKey(0);
+	}
+
     public void play(){
         try{
 			Controle c = new Controle();
-			Personagem pacman = new Pacman(lab.getSpawnPacman(0), lab.getSpawnPacman(1));
-			Personagem fantasma = new Fantasma(lab.getSpawnFantasma(0), lab.getSpawnFantasma(1));
+			pacman = new Pacman(lab.getSpawnPacman(0), lab.getSpawnPacman(1));
+			fantasma = new Fantasma(lab.getSpawnFantasma(0), lab.getSpawnFantasma(1));
 			pacman.spawn();
 			fantasma.spawn();
-	        while(true){
+	        while(vidas != 0){
 				if (start() == true){
+					fantasma.move();
 				    pacman.move();
-			        fantasma.move();
 			        clear();
 			        tela();
 			    }
@@ -55,6 +70,10 @@ public class GameManager{
 			        System.out.println("Utilize as setas para começar!");
 			    }
 			    TimeUnit.MILLISECONDS.sleep(150);
+			}
+			if (vidas == 0){
+				System.out.println("Game over!");
+				c.setVisible(false);
 			}
         } catch (Exception e){}
     }

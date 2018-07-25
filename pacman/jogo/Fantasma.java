@@ -14,6 +14,17 @@ public class Fantasma extends Personagem {
 		ultimaEscolha = rand.nextInt(4);
 	}
 
+	void setUltimoQuadrado (char c){
+		ultimoQuadrado = c;
+	}
+
+	void verificaMatouPacman(){
+		int y = Pacman.getPositions()[0];
+		int x = Pacman.getPositions()[1];
+		if (posy == y && posx == x)
+			GameManager.mortePacman(posy, posx);
+	}
+
 	private int sorteiaNumero() {
 		boolean[] posPossivel = new boolean[4]; // [Esq, Cim, Dir, Baixo]
 		int numPosPossiveis = 0;
@@ -44,6 +55,7 @@ public class Fantasma extends Personagem {
 
 	@Override
 	void move(){
+		verificaMatouPacman();
 		ultimaEscolha = sorteiaNumero();
 		char quadGuardado = getProxQuad(1, ultimaEscolha, posy, posx);
 		lab.mudarQuadrado(ultimoQuadrado, posx, posy);
@@ -60,7 +72,8 @@ public class Fantasma extends Personagem {
 			case 3: // Baixo
 				lab.mudarQuadrado('\u15E3', posx, posy+1);
 				posy++; break;
-			}
-			ultimoQuadrado = quadGuardado;
+		}
+		ultimoQuadrado = quadGuardado;
+		verificaMatouPacman();
 	}
 }
