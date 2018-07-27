@@ -74,8 +74,8 @@ public class Labirinto {
 		spawnFantasma[1] = x;
 	}
 
-	int getSpawnFantasma(int i) {
-		return spawnFantasma[i];
+	int[] getSpawnFantasma() {
+		return spawnFantasma;
 	}
 
 	private void setSpawnPacman(int y, int x) {
@@ -83,11 +83,15 @@ public class Labirinto {
 		spawnPacman[1] = x;
 	}
 
-	int getSpawnPacman(int i) {
-		return spawnPacman[i];
+	int[] getSpawnPacman() {
+		return spawnPacman;
 	}
 
-	char getQuadrado(int x, int y) {
+	void setQuadrado(char novoSimbolo, int y, int x){
+		labirinto[y][x] = novoSimbolo;
+	}
+
+	char getQuadrado(int y, int x) {
 		return labirinto[y][x];
 	}
 
@@ -98,10 +102,6 @@ public class Labirinto {
 			}
 			System.out.println();
 		}
-	}
-
-	void mudarQuadrado(char novoSimbolo, int x, int y){
-		labirinto[y][x] = novoSimbolo;
 	}
 
 }

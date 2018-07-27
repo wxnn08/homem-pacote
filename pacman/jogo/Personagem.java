@@ -1,7 +1,7 @@
 package jogo;
 
 public abstract class Personagem{
-    int spawny, spawnx;
+	int spawny, spawnx;
 	Labirinto lab = GameManager.lab;
 
 	public Personagem(int spawny, int spawnx){
@@ -13,14 +13,14 @@ public abstract class Personagem{
 	//a partir de dada posição (x,y)
 	protected char getProxQuad(int n, int dir, int posy, int posx){
 		if (dir == 0) // Esquerda
-			return lab.getQuadrado(posx-n, posy);
+			return lab.getQuadrado(posy, posx-n);
 		if (dir == 1) // Cima
-			return lab.getQuadrado(posx, posy-n);
+			return lab.getQuadrado(posy-n, posx);
 		if (dir == 2) // Direita
-			return lab.getQuadrado(posx+n, posy);
-		return lab.getQuadrado(posx, posy+n); // Baixo
+			return lab.getQuadrado(posy, posx+n);
+		return lab.getQuadrado(posy+n, posx); // Baixo
 	}
 
-    abstract void spawn();
-    abstract void move();
+	abstract void spawn();
+	abstract void mover();
 }
