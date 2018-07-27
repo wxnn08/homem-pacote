@@ -13,12 +13,19 @@ public class Labirinto {
 	private int[] spawnPacman = new int[2];
 	private int[] spawnFantasma = new int[2];
 
-	public Labirinto() throws Exception {
+	public Labirinto(int mapa) throws Exception {
 
 		labirinto = new char[larguraMaxima][alturaMaxima];
 		largura = new int[larguraMaxima];
 
-		BufferedReader arquivo = new BufferedReader(new FileReader("mapaTeste.txt"));
+		BufferedReader arquivo = new BufferedReader(new FileReader("mapa1.txt"));
+		switch (mapa){
+			case 1: arquivo = new BufferedReader(new FileReader("mapa1.txt")); break;
+			case 2: arquivo = new BufferedReader(new FileReader("mapa2.txt")); break;
+			case 3: arquivo = new BufferedReader(new FileReader("mapa3.txt")); break;
+			case 4: arquivo = new BufferedReader(new FileReader("mapa4.txt")); break;
+			case 5: arquivo = new BufferedReader(new FileReader("mapa5.txt")); break;
+		}
 
 		String s;
 		for(int i = 0;(s = arquivo.readLine()) != null ; i++) {

@@ -1,8 +1,9 @@
 Para montar um mapa para o jogo do Homem-Pacote é fácil. Basta criar um arquivo *.txt com o nome de mapa e montar seu labirinto de acordo com o esquema:
 
-# Representarão as paredes
-C Representará o lugar de nascimento do Homem Pacote
-G Representará o lugar de nascimento dos fantasmas
-N Representará lugares que você não quer que existam pontos
+'#' Representará uma parede
+'C' Representará o lugar de nascimento do Homem Pacote
+'G' Representará o lugar de nascimento dos fantasmas
+'N' Representará lugares que você não quer que existam pontos
+' ' Representará lugares que você quer que existam pontos
 
 Boa diversão!
