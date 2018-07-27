@@ -7,20 +7,20 @@ import javax.swing.JPanel;
 public class Controle extends JFrame implements KeyListener{
 
 	private static int teclaAtiva;
-	Labirinto lab = GameManager.lab;
+	private Labirinto lab = GameManager.lab;
 
-	public Controle(){
+	public Controle(){	
 		setSize(0,0);
 		setVisible(true);
 		addKeyListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	static void setTeclaAtiva(int tecla){
+	static private void setTeclaAtiva(int tecla){
 		teclaAtiva = tecla;
 	}
 
-	static int getTeclaAtiva(){
+	static private int getTeclaAtiva(){
 		return teclaAtiva;
 	}
 

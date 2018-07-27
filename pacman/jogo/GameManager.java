@@ -21,8 +21,8 @@ public class GameManager{
 		setTaxaDeAtualizacao(modo);
 	}
 
-	private void setTaxaDeAtualizacao(int mode){
-		switch (mode){
+	private void setTaxaDeAtualizacao(int modo){
+		switch (modo){
 			case 1: taxaDeAtualizacao = 200; break; //facil
 			case 2: taxaDeAtualizacao = 150; break; //medio
 			case 3: taxaDeAtualizacao = 100; break; //dificil
