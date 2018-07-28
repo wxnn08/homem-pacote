@@ -1,5 +1,6 @@
 import jogo.*;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Principal {
 	public static void main(String[] args) throws Exception {
@@ -29,11 +30,16 @@ public class Principal {
 		int tipoMapa;
 		while(true) {
 			System.out.println(' ');
-			System.out.println("Mapa 1: Original\nMapa 2: Pequeno\nMapa 3: Médio\nMapa 4: Grande\nMapa 5: ...");
+			System.out.println("Mapa 1: Original\nMapa 2: Pequeno\nMapa 3: Médio\nMapa 4: Grande\nMapa 5: Hardcore\nMapa 6: Aleatório");
 			System.out.print("Escolha o mapa: ");
 			tipoMapa = sc.nextInt();
-			if (tipoMapa > 0 && tipoMapa < 6)
+			if (tipoMapa > 0 && tipoMapa < 7){
+				if (tipoMapa == 6){
+					Random rand = new Random();
+					tipoMapa = rand.nextInt(5)+1;
+				}
 				return tipoMapa;
+			}
 			System.out.println("Por favor, digite um mapa válido.");
 		}
 
