@@ -76,7 +76,7 @@ public class Fantasma extends Personagem {
 		if (verificaMatouPacman()) return;
 		ultimaEscolha = sorteiaNumero();
 		char quadGuardado = getProxQuad(1, ultimaEscolha, posy, posx);
-		if (quadGuardado == '\u15E3') quadGuardado = '\u2022';
+		if (quadGuardado == '\u15E3') quadGuardado = ' ';
 		lab.setQuadrado(quadradoSalvo, posy, posx);
 		switch (ultimaEscolha) {
 			case 0: // Esquerda

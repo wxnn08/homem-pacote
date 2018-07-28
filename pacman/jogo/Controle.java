@@ -9,9 +9,9 @@ public class Controle extends JFrame implements KeyListener{
 	private static int teclaAtiva;
 	private Labirinto lab = GameManager.lab;
 
-	public Controle(){	
+	public Controle(){
 		setSize(0,0);
-		setVisible(true);
+		setVisible(false);
 		addKeyListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

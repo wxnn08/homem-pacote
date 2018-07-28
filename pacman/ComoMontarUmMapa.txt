@@ -6,4 +6,5 @@ Para montar um mapa para o jogo do Homem-Pacote é fácil. Basta criar um arquiv
 'N' Representará lugares que você não quer que existam pontos
 ' ' Representará lugares que você quer que existam pontos
 
+OBS: Não coloque pontos no ninho dos fantasmas.
 Boa diversão!

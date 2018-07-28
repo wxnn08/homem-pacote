@@ -5,16 +5,19 @@ public class Principal {
 	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		int numeroFantasmas, mapa, modo;
+		while(true){
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
 
-		System.out.print("\033[H\033[2J");
-		System.out.flush();
+			numeroFantasmas = escolhaNumeroFantasmas(sc);
+			mapa = escolhaMapa(sc);
+			modo = escolhaDificuldade(sc);
 
-		numeroFantasmas = escolhaNumeroFantasmas(sc);
-		mapa = escolhaMapa(sc);
-		modo = escolhaDificuldade(sc);
+			GameManager gm = new GameManager(numeroFantasmas, mapa, modo);
+			gm.play();
 
-		GameManager gm = new GameManager(numeroFantasmas, mapa, modo);
-		gm.play();
+			if(escolhaJogarNovamente(sc) == false) System.exit(0);
+		}
 	}
 
 	public static int escolhaNumeroFantasmas(Scanner sc) {
@@ -29,7 +32,7 @@ public class Principal {
 			System.out.println("Mapa 1: Original\nMapa 2: Pequeno\nMapa 3: Médio\nMapa 4: Grande\nMapa 5: ...");
 			System.out.print("Escolha o mapa: ");
 			tipoMapa = sc.nextInt();
-			if (tipoMapa > 0 && tipoMapa < 6) 
+			if (tipoMapa > 0 && tipoMapa < 6)
 				return tipoMapa;
 			System.out.println("Por favor, digite um mapa válido.");
 		}
@@ -43,10 +46,21 @@ public class Principal {
 			System.out.println("1: Fácil\n2: Moderado\n3: Difícil\n4: Insano");
 			System.out.print("Escolha a dificuldade: ");
 			dificuldade = sc.nextInt();
-			if (dificuldade > 0 && dificuldade < 5) 
+			if (dificuldade > 0 && dificuldade < 5)
 				return dificuldade;
 			System.out.println("Por favor, digite uma dificuldade válida.");
 		}
+	}
 
+	public static boolean escolhaJogarNovamente(Scanner sc){
+		char escolha;
+		while(true) {
+			System.out.println(' ');
+			System.out.print("Deseja jogar novamente? (S/N): ");
+			escolha = sc.next().charAt(0);
+			if (escolha == 'S' || escolha == 's') return true;
+			if (escolha == 'N' || escolha == 'n') return false;
+			System.out.println("Por favor, digite uma resposta válida.");
+		}
 	}
 }

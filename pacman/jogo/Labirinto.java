@@ -12,6 +12,7 @@ public class Labirinto {
 	private int[] largura;
 	private int[] spawnPacman = new int[2];
 	private int[] spawnFantasma = new int[2];
+	private int numPontos = 0;
 
 	public Labirinto(int mapa) throws Exception {
 
@@ -56,8 +57,18 @@ public class Labirinto {
 		}
 		else if (n=='N')
 			return ' ';
-		else
+		else{
+			numPontos++;
 			return '\u2022';
+		}
+	}
+
+	void setNumPontos(int numPontos){
+		this.numPontos = numPontos;
+	}
+
+	int getNumPontos(){
+		return numPontos;
 	}
 
 	private void setAltura(int valor) {

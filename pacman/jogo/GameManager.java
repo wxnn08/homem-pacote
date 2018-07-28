@@ -3,6 +3,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameManager{
 
+	static Controle c;
 	static Labirinto lab;
 	static Pacman pacman;
 	static Fantasma[] fantasmas;
@@ -14,6 +15,7 @@ public class GameManager{
 
 	public GameManager(int numfantasmas, int mapa, int modo) throws Exception{
 		lab = new Labirinto(mapa);
+		c = new Controle();
 		fantasmas = new Fantasma[numfantasmas];
 		pontos = 0;
 		vidas = 3;
@@ -66,12 +68,15 @@ public class GameManager{
 		setVidas(getVidas()-1);
 		pacman.spawn();
 		for (int i = 0; i < fantasmas.length; i++){
-			int[] fpos = fantasmas[i].getPosicao();
-			lab.setQuadrado(fantasmas[i].getQuadradoSalvo(), fpos[0], fpos[1]);
+			if (fantasmas[i] != null){
+				int[] fpos = fantasmas[i].getPosicao();
+				lab.setQuadrado(fantasmas[i].getQuadradoSalvo(), fpos[0], fpos[1]);
+			}
 			fantasmas[i] = null;
 			fSpawnados = 0;
 		}
 		lab.setQuadrado(' ', y, x);
+		c.setVisible(false);
 		Controle.setTeclaAtiva(0);
 	}
 
@@ -94,7 +99,6 @@ public class GameManager{
 
 	public void play(){
 		try{
-			Controle c = new Controle();
 			int[] pacSpawn = lab.getSpawnPacman();
 			pacman = new Pacman(pacSpawn[0], pacSpawn[1]);
 			pacman.spawn();
@@ -108,20 +112,29 @@ public class GameManager{
 					pacman.mover();
 					clear();
 					tela();
+					if (lab.getNumPontos()*10 == getPontos()) break;
 				}
 				else {
 					clear();
 					tela();
+					if (vidas != 3) System.out.println("Você morreu!");
 					System.out.println("Utilize as setas para começar!");
+					TimeUnit.MILLISECONDS.sleep(200);
+					c.setVisible(true);
 				}
 				TimeUnit.MILLISECONDS.sleep(taxaDeAtualizacao);
 			}
 
-			if (vidas == 0){
-				System.out.println("Game over!");
-				c.setVisible(false);
+			if (vidas == 0) {
+				System.out.println(" ");
+				System.out.println("Game over!\nSua pontuação: " + getPontos());
 			}
+			else System.out.println("Você venceu!");
+			c.setTeclaAtiva(0);
+			c.setVisible(false);
 
-		} catch (Exception e){}
+		} catch (Exception e){
+			System.out.println("Ocorreu um erro: " + e.toString());
+		}
 	}
 }
