@@ -16,11 +16,11 @@ public class Controle extends JFrame implements KeyListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	static private void setTeclaAtiva(int tecla){
+	protected static void setTeclaAtiva(int tecla){
 		teclaAtiva = tecla;
 	}
 
-	static private int getTeclaAtiva(){
+	protected static int getTeclaAtiva(){
 		return teclaAtiva;
 	}
 

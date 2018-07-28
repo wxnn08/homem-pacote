@@ -4,8 +4,8 @@ import java.io.FileReader;
 
 public class Labirinto {
 
-	final int larguraMaxima = 500;
-	final int alturaMaxima = 500;
+	private final int larguraMaxima = 500;
+	private final int alturaMaxima = 500;
 
 	char[][] labirinto;
 	private int altura;
@@ -90,19 +90,19 @@ public class Labirinto {
 		spawnPacman[1] = x;
 	}
 
-	int[] getSpawnPacman() {
+	protected int[] getSpawnPacman() {
 		return spawnPacman;
 	}
 
-	void setQuadrado(char novoSimbolo, int y, int x){
+	protected void setQuadrado(char novoSimbolo, int y, int x){
 		labirinto[y][x] = novoSimbolo;
 	}
 
-	char getQuadrado(int y, int x) {
+	protected char getQuadrado(int y, int x) {
 		return labirinto[y][x];
 	}
 
-	void mostrarLabirinto() {
+	protected void mostrarLabirinto() {
 		for (int i = 0; i < getAltura(); i++) {
 			for (int j = 0; j < getLargura(i); j++) {
 				System.out.print(labirinto[i][j]);
