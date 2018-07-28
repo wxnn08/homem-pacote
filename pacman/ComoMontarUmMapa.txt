@@ -1,4 +1,4 @@
-Para montar um mapa para o jogo do Homem-Pacote é fácil. Basta criar um arquivo *.txt com o nome de mapa e montar seu labirinto de acordo com o esquema:
+Para montar um mapa para o jogo do Homem-Pacote é fácil. Basta criar um arquivo *.txt e substituir um dos 5 mapas prontos. Monte o seu labirinto de acordo com o esquema:
 
 '#' Representará uma parede
 'C' Representará o lugar de nascimento do Homem Pacote

@@ -3,23 +3,6 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Principal {
-	public static void main(String[] args) throws Exception {
-		Scanner sc = new Scanner(System.in);
-		int numeroFantasmas, mapa, modo;
-		while(true){
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
-
-			numeroFantasmas = escolhaNumeroFantasmas(sc);
-			mapa = escolhaMapa(sc);
-			modo = escolhaDificuldade(sc);
-
-			GameManager gm = new GameManager(numeroFantasmas, mapa, modo);
-			gm.play();
-
-			if(escolhaJogarNovamente(sc) == false) System.exit(0);
-		}
-	}
 
 	public static int escolhaNumeroFantasmas(Scanner sc) {
 		System.out.print("Digite o número de fantasmas: ");
@@ -69,4 +52,23 @@ public class Principal {
 			System.out.println("Por favor, digite uma resposta válida.");
 		}
 	}
+
+	public static void main(String[] args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		int numeroFantasmas, mapa, modo;
+		while(true){
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+
+			numeroFantasmas = escolhaNumeroFantasmas(sc);
+			mapa = escolhaMapa(sc);
+			modo = escolhaDificuldade(sc);
+
+			GameManager gm = new GameManager(numeroFantasmas, mapa, modo);
+			gm.play();
+
+			if(escolhaJogarNovamente(sc) == false) System.exit(0);
+		}
+	}
+
 }
