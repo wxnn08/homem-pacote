@@ -9,8 +9,6 @@ public abstract class Personagem{
 		this.spawnx = spawnx;
 	}
 
-	//captura o n proximo quadrado levando em consideracao a direcao dir
-	//a partir de dada posição (x,y)
 	protected char getProxQuad(int n, int dir, int posy, int posx){
 		if (dir == 0) // Esquerda
 			return lab.getQuadrado(posy, posx-n);
