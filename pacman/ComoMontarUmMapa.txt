@@ -7,4 +7,5 @@ Para montar um mapa para o jogo do Homem-Pacote é fácil. Basta criar um arquiv
 ' ' Representará lugares que você quer que existam pontos
 
 OBS: Não coloque pontos no ninho dos fantasmas.
+OBS2: O tamanho máximo do mapa é 500x500.
 Boa diversão!

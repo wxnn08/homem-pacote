@@ -43,7 +43,7 @@ public class Principal {
 
 	public static boolean escolhaJogarNovamente(Scanner sc){
 		char escolha;
-		while(true) {
+		while(true) {	
 			System.out.println(' ');
 			System.out.print("Deseja jogar novamente? (S/N): ");
 			escolha = sc.next().charAt(0);
