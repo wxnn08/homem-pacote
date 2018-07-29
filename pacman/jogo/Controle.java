@@ -35,6 +35,7 @@ public class Controle extends JFrame implements KeyListener{
 		return false;
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e){
 		int teclaApertada = e.getKeyCode();
 		if (teclaApertada == 37 && podeMudar(1)) setTeclaAtiva(37); // Seta esq.

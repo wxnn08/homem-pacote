@@ -21,7 +21,6 @@ public class Labirinto {
 
 		BufferedReader arquivo = new BufferedReader(new FileReader("mapa1.txt"));
 		switch (mapa){
-			case 1: arquivo = new BufferedReader(new FileReader("mapa1.txt")); break;
 			case 2: arquivo = new BufferedReader(new FileReader("mapa2.txt")); break;
 			case 3: arquivo = new BufferedReader(new FileReader("mapa3.txt")); break;
 			case 4: arquivo = new BufferedReader(new FileReader("mapa4.txt")); break;
@@ -32,7 +31,7 @@ public class Labirinto {
 		for(int i = 0;(s = arquivo.readLine()) != null ; i++) {
 
 			if(s.length() >= larguraMaxima) {
-				// lança exceção
+				throw new Exception("O tamanho desse mapa é maior do que o limite (500x500)!");
 			}
 			for (int j = 0; j<s.length(); j++) {
 				labirinto[i][j] = devolveChar(s.charAt(j), j, i);

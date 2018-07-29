@@ -13,10 +13,10 @@ public class GameManager{
 	private static int vidas;
 	private static int fSpawnados;
 
-	public GameManager(int numfantasmas, int mapa, int modo) throws Exception{
+	public GameManager(int numFantasmas, int mapa, int modo) throws Exception{
 		lab = new Labirinto(mapa);
 		c = new Controle();
-		fantasmas = new Fantasma[numfantasmas];
+		fantasmas = new Fantasma[numFantasmas];
 		pontos = 0;
 		vidas = 3;
 		fSpawnados = 0;
