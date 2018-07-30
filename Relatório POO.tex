@@ -22,16 +22,16 @@ Este relatório deve conter uma breve descrição do seu projeto, não podendo u
 Neste projeto, as classes foram criadas com a intenção de implementar a seguinte ideia de modelagem: 
 
 \begin{itemize}
-	\item GameManager: É a classe que controla todo o fluxo do jogo. Possui métodos responsáveis pela impressão de movimentação dos elementos ao longo do mapa e de controle de vidas e pontos, além de instanciar todas as demais classes. De modo geral, é a classe que controla o jogo. 
-	\item Labirinto: Responsável por ler um mapa a partir de um arquivo .txt, traduzindo-o para uma matriz. Possui métodos get e set para tratar as células dessa matriz. A intenção foi que existisse uma instância global e única desta classe no programa.
-	\item Personagem: Classe abstrata que representa dois elementos específicos no jogo: o Pacman e os Fantasmas. Esta classe possui métodos e atributos comuns a essas duas entidades.
-	\item Pacman: Extende Personagem e representa a abstração do Pac-Man. Possui alguns métodos sobrescritos que vêm de Personagem e outros que são apenas herdados. Possui métodos para movimentação do Pac-Man. A intenção foi de que só existisse uma instância desta classe no programa (assim como o labirinto).
-	\item Fantasma: Extende Personagem e representa a abstração de um fantasma. Assim como a classe Pacman, também sobrescreve e herda determinados métodos de Personagem. Possui métodos para a movimentação dos fantasmas e para eliminar o Pac-Man. Diferente de Pacman, esperava-se a existência de várias instâncias desta classe no programa.
-	\item Controle: Classe responsável por capturar as teclas apertadas pelo usuário em tempo real. Implementa a classe KeyListener (responsável pelos métodos de captura de entradas) e extende a classe JFrame (que cria uma janela utilizando Swing, sendo responsável por habilitar os métodos de KeyListener).
-	\item Principal: Classe onde localiza-se o programa que será executado (main). Instancia um  único objeto de GameManager. Possui métodos para escolha do número de fantasmas, do mapa e da dificuldade do jogo, além de habilitar a opção de "Jogar Novamente".
+	\item \textbf{GameManager}: É a classe que controla todo o fluxo do jogo. Possui métodos responsáveis pela impressão de movimentação dos elementos ao longo do mapa e de controle de vidas e pontos, além de instanciar todas as demais classes (exceto Principal). De modo geral, é a classe que controla o jogo. 
+	\item \textbf{Labirinto}: Responsável por ler um mapa a partir de um arquivo .txt, traduzindo-o para uma matriz. Possui métodos get e set para tratar as células dessa matriz. A intenção é que exista uma instância global e única desta classe no programa.
+	\item \textbf{Personagem}: Classe abstrata que representa dois elementos específicos no jogo: o Pac-Man e os fantasmas. Esta classe possui métodos e atributos comuns a essas duas entidades.
+	\item \textbf{Pacman}: Estende Personagem e representa a abstração do Pac-Man. Possui alguns métodos sobrescritos que vêm de Personagem e outros que são apenas herdados. Além disso, possui métodos para movimentação do Pac-Man. A intenção é que exista apenas uma instância desta classe no programa (assim como Labirinto).
+	\item \textbf{Fantasma}: Estende Personagem e representa a abstração de um fantasma. Assim como a classe Pacman, também sobrescreve e herda determinados métodos de Personagem. Ademais, possui métodos para a movimentação dos fantasmas e para eliminar o Pac-Man. No entanto, diferentemente da classe Pacman, espera-se a existência de várias instâncias de Fantasma no programa.
+	\item \textbf{Controle}: Classe responsável por capturar as teclas pressionadas pelo usuário em tempo real. Implementa a classe KeyListener (responsável pelos métodos de captura de entradas) e estende a classe JFrame (que cria uma janela utilizando Swing, sendo responsável por habilitar os métodos de KeyListener). Mais uma vez, a intenção é que haja uma classe única e global no programa.
+	\item \textbf{Principal}: Classe onde localiza-se o programa que será executado (main). Instancia um único objeto de GameManager. Possui métodos para escolha do número de fantasmas, do mapa e da dificuldade do jogo, além de habilitar a opção de "Jogar Novamente".
 \end{itemize}
 
-Na imagem abaixo, verifica-se o diagrama UML elaborado, que demonstra a modelagem e a relação entre as classes, apresentando os atibutos e métodos de cada uma:
+Na imagem abaixo, apresenta-se o diagrama UML elaborado. Este diagrama demonstra a modelagem e a relação entre as classes, apresentando os atributos e métodos de cada uma:
 
 \begin{center}
 \includegraphics[width=12cm]{UML.PNG}
