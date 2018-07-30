@@ -17,9 +17,9 @@
 
 \section{Introdução}
 
-Neste trabalho, foi montado um jogo baseado no clássico dos arcades "Pac-Man" utilizando o terminal do Linux como a janela onde o jogo é exibido. O trabalho foi realizado com intenção de utilizar conceitos aprendidos na aula de Programação Orientada a Objetos, ministradas pelos professores Paulo H. Pisani e Saul C. Leite.
+Neste trabalho, foi realizado o desenvolvimento de um jogo baseado no clássico dos arcades: Pac-Man. Para tanto, utilizou-se o terminal do Linux como a janela onde o jogo é exibido. O trabalho foi realizado com a intenção de se utilizar conceitos abordados nas aulas da disciplina Programação Orientada a Objetos, ministrada pelos professores Paulo H. Pisani e Saul C. Leite.
 
-O objetivo principal na criação do projeto foi ter uma versão de "Pac-Man" onde arquivos de mapa seriam lidos pelo programa para gerar uma matriz onde ocorreria a partida e receber a quantidade de fantasmas contidas no mapa como parâmetro, tornando o jogo uma experiência customizável e atendendo as exigências iniciais do trabalho.
+O objetivo principal no desenvolvimento do projeto foi criar uma versão do Pac-Man onde arquivos de mapa (em formato .txt) são lidos pelo programa para gerar uma matriz. Neste matriz, ocorre toda a dinâmica do jogo, que pode receber parâmetros como a quantidade de fantasmas contidas no mapa, o mapa a ser jogado e a dificuldade. Tais parâmetros tornam o jogo uma experiência customizável, atendendo, desta forma, as exigências iniciais do trabalho.
 
 \section{Descrição das classes}
 Neste projeto, as classes foram criadas com a intenção de implementar a seguinte ideia de modelagem: 
@@ -60,14 +60,14 @@ Por fim, utilizou-se o \textbf{tratamento de exceções} pontualmente para duas 
 Ressalta-se que, durante o desenvolvimento do jogo e ao decorrer das aulas, surgiu a intenção de implementar o padrão de projeto Singleton para formalizar uma instância global de Pacman, Controle, Labirinto e GameManager. No entanto, devido ao limite de tempo e a todo o progresso efetuado antes de tal evento, optou-se por não utilizar o padrão de projeto, mantendo muitos atributos e métodos como \texttt{static}.
 
 \section{Participação de cada integrante do grupo}
-Durante a manutenção do projeto, todos os integrantes do grupo discutiram e deram ideias de como implementar os recursos de forma eficiente e de como resolver os problemas que apareceram no decorrer do desenvolvimento. Então, por mais que separemos aqui a participação de cada um, na maioria dos casos cada separação do projeto possui mais do que só um envolvido que trabalhou nela.
+Durante a manutenção do projeto, todos os integrantes do grupo discutiram e levantaram ideias de implementação para os recursos, buscando a forma mais eficiente de realizar o desenvolvimento. Além disso, todos os integrantes também ajudaram a resolver eventuais problemas que apareceram no decorrer da construção do jogo. Portanto, por mais que haja determinada separação de responsabilidades nesta seção, na maioria dos casos as funcionalidades foram desenvolvidas em conjunto, sendo aprimoradas ao longo do tempo de trabalho.
 
-\textbf{André Aranovich Florentino:} Implementação da leitura e criação do labirinto a partir de um arquivo de texto, revisão de código, montagem do diagrama de classes no formato UML.
+\textbf{André Aranovich Florentino}: Implementação da leitura e criação do labirinto a partir de um arquivo de texto, revisão de código, montagem do diagrama de classes no formato UML.
 
-\textbf{Tatsuya Masunaga Santos:}
+\textbf{Bruno Tatsuya Masunaga Santos}: Implementação da estrutura de captura de teclas pressionadas pelo usuário, desenvolvimento do movimento dos personagens, otimização de casos do fluxo de jogo (como morte do Pac-Man e game-over), habilitação de parâmetros de entrada para o programa (número de fantasmas, mapa, dificuldade), elaboração parcial do relatório.
 
-\textbf{Lucas Eduardo Gonçalves da Rosa:}
+\textbf{Lucas Eduardo Gonçalves da Rosa}:
 
-\textbf{Wesley Pereira da Silva:}
+\textbf{Wesley Pereira da Silva}:
 
 \end{document}
