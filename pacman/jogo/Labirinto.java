@@ -6,6 +6,8 @@ public class Labirinto {
 
 	private final int larguraMaxima = 500;
 	private final int alturaMaxima = 500;
+	private Paleta paleta = new Paleta();
+	private Simbolo simb = new Simbolo();
 
 	char[][] labirinto;
 	private int altura;
@@ -45,20 +47,20 @@ public class Labirinto {
 
 	private char devolveChar(char n, int j, int i) {
 		if (n=='#')
-			return '\u2588';
+			return simb.getParede();
 		else if (n=='G'){
 			setSpawnFantasma(i, j);
-			return '\u15E3';
+			return simb.getFantasma();
 		}
 		else if (n=='C') {
 			setSpawnPacman(i, j);
-			return '\u228F';
+			return simb.getPacman('d');
 		}
 		else if (n=='N')
-			return ' ';
+			return simb.getVazio();
 		else{
 			numPontos++;
-			return '\u2022';
+			return simb.getPonto();
 		}
 	}
 
@@ -112,10 +114,27 @@ public class Labirinto {
 		return labirinto[y][x];
 	}
 
+	private void imprimePosicao(char pos) {
+		// Aplica cor
+		if(pos == simb.getParede()) {
+			System.out.print(paleta.getCor("Azul"));
+		}
+		else if(pos == simb.getFantasma()) {
+			System.out.print(paleta.getCor("Verde2"));
+		}
+		else if(pos==simb.getPacman('e') || pos==simb.getPacman('c') || pos==simb.getPacman('d') || pos==simb.getPacman('b')) {
+			System.out.print(paleta.getCor("Amarelo"));
+		}
+		// Imprime posicao
+		System.out.print(pos);
+		// Reseta cor
+		System.out.print(paleta.reset());
+	}
+
 	protected void mostrarLabirinto() {
 		for (int i = 0; i < getAltura(); i++) {
 			for (int j = 0; j < getLargura(i); j++) {
-				System.out.print(labirinto[i][j]);
+				imprimePosicao(labirinto[i][j]);
 			}
 			System.out.println();
 		}

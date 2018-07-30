@@ -3,6 +3,7 @@ package jogo;
 public abstract class Personagem{
 	int spawny, spawnx;
 	Labirinto lab = GameManager.lab;
+	protected Simbolo simb = new Simbolo();
 
 	public Personagem(int spawny, int spawnx){
 		this.spawny = spawny;

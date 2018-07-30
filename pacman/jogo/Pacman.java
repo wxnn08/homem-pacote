@@ -25,24 +25,24 @@ public class Pacman extends Personagem{
 	void mover(){
 		int teclaAtual = Controle.getTeclaAtiva();
 		char proximoQuadrado = getProxQuad(1, teclaAtual-37, posy, posx);
-		if (proximoQuadrado != '\u2588'){
-			if (proximoQuadrado == '\u2022') GameManager.adicionaPontos(10);
+		if (proximoQuadrado != simb.getParede()){
+			if (proximoQuadrado == simb.getPonto()) GameManager.adicionaPontos(10);
 			switch (teclaAtual){
 				case 37: // Esquerda
-					lab.setQuadrado(' ', posy, posx);
-					lab.setQuadrado('\u2290', posy, posx-1);
+					lab.setQuadrado(simb.getVazio(), posy, posx);
+					lab.setQuadrado(simb.getPacman('e'), posy, posx-1);
 					posx--;	break;
 				case 38: // Cima
-					lab.setQuadrado(' ', posy, posx);
-					lab.setQuadrado('\u2294', posy-1, posx);
+					lab.setQuadrado(simb.getVazio(), posy, posx);
+					lab.setQuadrado(simb.getPacman('c'), posy-1, posx);
 					posy--;	break;
 				case 39: // Direita
-					lab.setQuadrado(' ', posy, posx);
-					lab.setQuadrado('\u228F', posy, posx+1);
+					lab.setQuadrado(simb.getVazio(), posy, posx);
+					lab.setQuadrado(simb.getPacman('d'), posy, posx+1);
 					posx++;	break;
 				case 40: // Baixo
-					lab.setQuadrado(' ', posy, posx);
-					lab.setQuadrado('\u2293', posy+1, posx);
+					lab.setQuadrado(simb.getVazio(), posy, posx);
+						lab.setQuadrado(simb.getPacman('b'), posy+1, posx);
 					posy++;	break;
 			}
 		}
